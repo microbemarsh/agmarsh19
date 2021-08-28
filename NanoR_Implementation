@@ -1,0 +1,44 @@
+#This code is used to analyze read lengths, read quality, and many other variables filtering options that are available by using NanoR (github @davidebolo1993). Conversion of Fastq files by to .csv file to be manipulated with dplyr and ggplot2.
+
+
+library(dplyr)
+library(NanoR)
+library(ggplot2)
+
+sequencing_run<-"C:/Users/Austin Marshall/Documents/Grad Research/MinION/AGM_classification_R/"
+
+summary<-file.path(sequencing_run,"sequencing_summary_FAQ42231_17d56c1e.txt")
+
+fastq<-file.path(sequencing_run, "fastq_pass")
+
+output<-file.path("C:/Users/Austin Marshall/Documents/Grad Research/MinION/AGM_classification_R/nanor_trial_v1")
+
+
+Glist<-NanoPrepareG(DataSummary=summary,DataFastq=fastq)
+
+Gtable<-NanoTableG(NanoGList=Glist, DataOut=output, GCC=FALSE) # switch GCC to TRUE to enable calculation of GC content from passed FASTQ.
+
+NanoStatsG(NanoGList=Glist, NanoGTable=Gtable, DataOut=output, KeepGGObj = FALSE)
+
+_________________________________________________________________________________________________________________________________________________
+
+write.csv(Gtable, file = "21_8_21_seq_fastq_pass.csv", append = FALSE, quote = TRUE, sep = " ", eol = "\n", na = "NA", dec = ".", row.names = TRUE, 
+  col.names = TRUE, qmethod = c("escape", "double"),
+  fileEncoding = "")
+            
+__________________________________________________________________________________________________________________________________________________
+
+G_data <- read.csv("21_8_21_seq_fastq_pass.csv") %>% 
+  select("Read_Id", "Length_of_Read", "Quality", "Relative_Time") #there are more available options, view the recently made Gtable to see
+  
+G_data_filtered <- G_data %>% 
+  group_by(Length_of_Read) %>%
+  filter(n() > 300)
+  list(G_data_filtered$Length_of_Read)
+
+G_data_plot <- ggplot(G_data_filtered, aes(x=Length_of_Read)) +
+  geom_histogram(stat="count")
+
+G_data_plot #graphing the variable (x) in line 36 by count (y) in line 41
+
+summary(G_data_plot)
