@@ -1,5 +1,5 @@
 - Howdy y'all, I’m @agmarsh19
-- I use nanopore 16S amplicon sequencing for analyzing various bacterial microbiomes, with the occassional metagenomic or transcriptomic study
+- I use nanopore 16S amplicon sequencing to analyze various bacterial microbiomes, with the occassional metagenomic or transcriptomic study
 - Currently a 3rd year biotech PhD student at Clarkson University 
 - When I'm not grinding out the PhD I'm probably out fishing or hiking 
 - You can reach me at marshaag@clarkson.edu
