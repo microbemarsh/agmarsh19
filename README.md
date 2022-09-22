@@ -1,7 +1,7 @@
 - Howdy y'all, I’m @agmarsh19
-- I use nanopore sequencing and data analysis pipelines for bacterial microbiome and transcriptome studies
-- I’m currently a biotech PhD student at Clarkson University 
-- Relatively new to bioinformatics but I'm always open to learn more
+- I use nanopore sequencing for analyzing various microbiomes with 16S rDNA, with the occassional genomic or transcriptomic study
+- Currently a 3rd year biotech PhD student at Clarkson University 
+- When I'm not grinding out the PhD I'm probably out fishing or hiking 
 - You can reach me at marshaag@clarkson.edu
 
 <!---
